@@ -10,7 +10,11 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(nav2_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(visualization_msgs REQUIRED)
 find_package(nlohmann_json REQUIRED)
+find_package(PROJ REQUIRED)
 
 # Додайте виконуваний файл
 add_executable(zone_checker src/zone_checker.cpp)
@@ -22,15 +26,19 @@ ament_target_dependencies(zone_checker
   rclcpp
   sensor_msgs
   std_msgs
+  nav2_msgs
+  geometry_msgs
+  visualization_msgs
   nlohmann_json
+  PROJ
 )
 
 # Встановлення виконуваного файлу
 install(TARGETS zone_checker
   DESTINATION lib/${PROJECT_NAME})
 
-# Встановлення GeoJSON
-install(FILES config/zone.geojson
+# Встановлення GeoJSON і параметрів
+install(FILES config/params.yaml
   DESTINATION share/${PROJECT_NAME}/config)
 
 ament_package()

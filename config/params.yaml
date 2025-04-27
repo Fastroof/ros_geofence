@@ -1,0 +1,6 @@
+zone_checker:
+  ros__parameters:
+    geojson_file: "../zone.geojson"
+    costmap_resolution: 0.1
+    costmap_topic: "/global_costmap/costmap"
+    geofence_zone_topic: "/geofence_zone"
