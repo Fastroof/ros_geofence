@@ -1,0 +1,66 @@
+capture_directory: "~"
+fixed_frame: map
+target_frame: map
+fix_orientation: false
+rotate_90: false
+enable_antialiasing: true
+show_displays: true
+show_status_bar: true
+show_capture_tools: true
+window_width: 1200
+window_height: 800
+view_scale: 0.5
+offset_x: 0
+offset_y: 0
+use_latest_transforms: true
+background: "#a0a0a4"
+image_transport: raw
+displays:
+  - type: mapviz_plugins/tile_map
+    name: satellite
+    config:
+      visible: true
+      collapsed: false
+      custom_sources:
+        - base_url: https://api.maptiler.com/tiles/satellite-v2/{level}/{x}/{y}.jpg?key=${MAPTILER_API_KEY}
+          max_zoom: 22
+          name: maptiler_satellite
+          type: wmts
+      bing_api_key: ""
+      source: maptiler_satellite
+  - type: mapviz_plugins/marker
+    name: geofence
+    config:
+      visible: true
+      collapsed: false
+      topic: /geofence_marker
+      qos_depth: 10
+      qos_history: 1
+      qos_reliability: 1
+      qos_durability: 2
+  - type: mapviz_plugins/navsat
+    name: gps
+    config:
+      visible: true
+      collapsed: false
+      topic: /gps/fix
+      color: "#00ff00"
+      draw_style: points
+      position_tolerance: 0
+      buffer_size: 1
+      qos_depth: 10
+      qos_history: 1
+      qos_reliability: 1
+      qos_durability: 2
+  - type: mapviz_plugins/tf_frame
+    name: robot
+    config:
+      visible: true
+      collapsed: false
+      frame: base_link
+      color: "#ff0000"
+      draw_style: arrows
+      position_tolerance: 0
+      buffer_size: 1
+      static_arrow_sizes: true
+      arrow_size: 50
