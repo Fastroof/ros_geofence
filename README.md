@@ -2,6 +2,8 @@
 
 ROS 2 пакет для перевірки знаходження робота в межах визначеної географічної зони (geofence).
 
+![Geofence Visualization](docs/images/mapviz_screenshot.png)
+
 ## Опис
 
 Пакет дозволяє:
