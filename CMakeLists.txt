@@ -10,7 +10,6 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
-find_package(nav2_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(visualization_msgs REQUIRED)
 find_package(tf2_ros REQUIRED)
@@ -21,12 +20,11 @@ add_executable(zone_checker src/zone_checker.cpp)
 target_include_directories(zone_checker PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
-target_compile_features(zone_checker PUBLIC c_std_99 cxx_std_17)  # C++17
+target_compile_features(zone_checker PUBLIC cxx_std_17)
 ament_target_dependencies(zone_checker
   rclcpp
   sensor_msgs
   std_msgs
-  nav2_msgs
   geometry_msgs
   visualization_msgs
   PROJ
@@ -37,7 +35,7 @@ add_executable(fake_robot src/fake_robot.cpp)
 target_include_directories(fake_robot PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
-target_compile_features(fake_robot PUBLIC c_std_99 cxx_std_17)
+target_compile_features(fake_robot PUBLIC cxx_std_17)
 ament_target_dependencies(fake_robot
   rclcpp
   sensor_msgs
