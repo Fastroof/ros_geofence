@@ -43,8 +43,19 @@ ament_target_dependencies(fake_robot
   tf2_ros
 )
 
+# Додайте виконуваний файл filter_mask_generator
+add_executable(filter_mask_generator src/filter_mask_generator.cpp)
+target_include_directories(filter_mask_generator PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>)
+target_compile_features(filter_mask_generator PUBLIC cxx_std_17)
+ament_target_dependencies(filter_mask_generator
+  rclcpp
+  PROJ
+)
+
 # Встановлення виконуваних файлів
-install(TARGETS zone_checker fake_robot
+install(TARGETS zone_checker fake_robot filter_mask_generator
   DESTINATION lib/${PROJECT_NAME})
 
 # Встановлення конфігураційних файлів
